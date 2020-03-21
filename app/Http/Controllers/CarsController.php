@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Car;
 use Illuminate\Http\Request;
+use App\Http\Requests\CarRequest;
 use Illuminate\Http\JsonResponse;
 
 class CarsController extends Controller
@@ -34,21 +35,21 @@ class CarsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CarRequest $request)
     {
-        $car = new Car();
+        // $car = new Car();
 
-        $car->brand = $request->input('brand');
-        $car->model = $request->input('model');
-        $car->year = $request->input('year');
-        $car->maxSpeed = $request->input('maxSpeed');
-        $car->isAutomatic = $request->input('isAutomatic');
-        $car->engine = $request->input('engine');
-        $car->numberOfDoors = $request->input('numberOfDoors');
+        // $car->brand = $request->input('brand');
+        // $car->model = $request->input('model');
+        // $car->year = $request->input('year');
+        // $car->maxSpeed = $request->input('maxSpeed');
+        // $car->isAutomatic = $request->input('isAutomatic');
+        // $car->engine = $request->input('engine');
+        // $car->numberOfDoors = $request->input('numberOfDoors');
 
-        $car->save();
+        // $car->save();
 
-        return $car;
+        return $car = Car::create($request->all());
     }
 
     /**
@@ -57,9 +58,9 @@ class CarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Car $car)
     {
-        return Car::find($id);
+        return $car;
     }
 
     /**
@@ -80,19 +81,21 @@ class CarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CarRequest $request, Car $car)
     {
-        $car = Car::find($id);
+        // $car = Car::find($id);
 
-        $car->brand = $request->input('brand');
-        $car->model = $request->input('model');
-        $car->year = $request->input('year');
-        $car->maxSpeed = $request->input('maxSpeed');
-        $car->isAutomatic = $request->input('isAutomatic');
-        $car->engine = $request->input('engine');
-        $car->numberOfDoors = $request->input('numberOfDoors');
+        // $car->brand = $request->input('brand');
+        // $car->model = $request->input('model');
+        // $car->year = $request->input('year');
+        // $car->maxSpeed = $request->input('maxSpeed');
+        // $car->isAutomatic = $request->input('isAutomatic');
+        // $car->engine = $request->input('engine');
+        // $car->numberOfDoors = $request->input('numberOfDoors');
 
-        $car->save();
+        // $car->save();
+
+        $car->update($request->all());
 
         return $car;
     }
@@ -103,9 +106,9 @@ class CarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Car $car)
     {
-        $car = Car::find($id);
+        // $car = Car::find($id);
 
         $car->delete();
 
