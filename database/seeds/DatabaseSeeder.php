@@ -14,3 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CarsTableSeeder::class);
     }
 }
+
+// php artisan migrate:fresh --seed
+

@@ -16,3 +16,5 @@ $factory->define(Car::class, function (Faker $faker) {
         'numberOfDoors' =>$faker->numberBetween(3, 5),
     ];
 });
+
+// php artisan make:factory CarsFactory --model=Car
